@@ -58,9 +58,9 @@
   "[markdown]": {
     "editor.wordWrap": "on",
     "editor.quickSuggestions": {
-      "comments": "on",
-      "strings": "on",
-      "other": "on"
+      "comments": true,
+      "strings": true,
+      "other": true
     }
   }
 }
