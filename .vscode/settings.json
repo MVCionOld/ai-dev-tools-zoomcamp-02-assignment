@@ -1,0 +1,66 @@
+{
+  // GitHub Copilot Settings for VS Code
+  
+  // Enable GitHub Copilot
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": false,
+    "markdown": true
+  },
+  
+  // Enable inline suggestions
+  "github.copilot.inlineSuggest.enable": true,
+  
+  // Editor settings for better Copilot experience
+  "editor.inlineSuggest.enabled": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  
+  // Show Copilot suggestions
+  "github.copilot.editor.enableAutoCompletions": true,
+  
+  // Copilot Chat settings (if available)
+  "github.copilot.chat.enabled": true,
+  
+  // Additional editor enhancements
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  
+  // Language-specific settings
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true
+  },
+  "[yaml]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": true,
+      "strings": true,
+      "other": true
+    }
+  }
+}
