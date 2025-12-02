@@ -21,17 +21,23 @@ async def get_redis_client() -> redis.asyncio.Redis:  # type: ignore[name-define
     """Lazily create and return a shared Redis client."""
     global _redis_client
     if _redis_client is None:
-        _redis_client = redis.asyncio.Redis.from_url(  # type: ignore[attr-defined]
-            settings.REDIS_URL, decode_responses=True
-        )
-        try:
-            ping_result = _redis_client.ping()
-            if asyncio.iscoroutine(ping_result):
-                await ping_result
-        except (redis.exceptions.ConnectionError, OSError):  # type: ignore[attr-defined]
+        # Use FakeRedis in testing mode
+        if settings.TESTING:
             from fakeredis.aioredis import FakeRedis  # type: ignore
 
             _redis_client = FakeRedis(decode_responses=True)
+        else:
+            _redis_client = redis.asyncio.Redis.from_url(  # type: ignore[attr-defined]
+                settings.REDIS_URL, decode_responses=True
+            )
+            try:
+                ping_result = _redis_client.ping()
+                if asyncio.iscoroutine(ping_result):
+                    await ping_result
+            except (redis.exceptions.ConnectionError, OSError):  # type: ignore[attr-defined]
+                from fakeredis.aioredis import FakeRedis  # type: ignore
+
+                _redis_client = FakeRedis(decode_responses=True)
     return _redis_client
 
 

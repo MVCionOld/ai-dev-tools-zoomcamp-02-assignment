@@ -1,4 +1,5 @@
 import asyncio
+import os
 from collections.abc import AsyncGenerator, Generator
 
 import pytest
@@ -6,11 +7,15 @@ import pytest_asyncio
 from httpx import ASGITransport, AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
-from app.api.deps import get_db_session
-from app.core.config import settings
-from app.db.base import Base
-from app.db.session import get_session
-from app.main import app
+# Set testing flag before importing app
+os.environ["TESTING"] = "true"
+
+# noqa: E402 - Must import after setting TESTING env var
+from app.api.deps import get_db_session  # noqa: E402
+from app.core.config import settings  # noqa: E402
+from app.db.base import Base  # noqa: E402
+from app.db.session import get_session  # noqa: E402
+from app.main import app  # noqa: E402
 
 TEST_DATABASE_URL = settings.TEST_DATABASE_URL or "sqlite+aiosqlite:///:memory:"
 

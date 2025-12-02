@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from typing import List
 
 from pydantic import Field, field_validator
@@ -25,6 +26,11 @@ class Settings(BaseSettings):
     # Redis
     REDIS_URL: str = "redis://localhost:6379/0"
     REDIS_PUBSUB_CHANNEL: str = "sharedb"
+
+    # Testing flag
+    TESTING: bool = Field(
+        default_factory=lambda: os.getenv("TESTING", "false").lower() == "true"
+    )
 
     # Security
     SECRET_KEY: str = "your-secret-key-change-in-production"

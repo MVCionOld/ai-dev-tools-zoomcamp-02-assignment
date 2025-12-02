@@ -95,10 +95,14 @@ async def _ensure_creator(db: AsyncSession, session_id: UUID, user_id: UUID) -> 
 async def update_problem_text(
     db: AsyncSession, session_id: UUID, user_id: UUID, problem_text: str
 ) -> Session:
-    # Verify the user exists in this session (allow all roles for now)
+    # Verify the user exists in this session and has creator role
     user = await db.get(User, user_id)
     if user is None or user.session_id != session_id:
         raise UserNotFoundError(str(user_id))
+
+    # Check if user is the creator
+    if user.role != UserRole.CREATOR:
+        raise PermissionError("Only session creator can update problem text")
 
     session_obj = await get_session_by_id(db, session_id)
     session_obj.problem_text = problem_text
