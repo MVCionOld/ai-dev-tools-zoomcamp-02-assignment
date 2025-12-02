@@ -1,6 +1,6 @@
 {
   // GitHub Copilot Settings for VS Code
-  
+
   // Enable GitHub Copilot
   "github.copilot.enable": {
     "*": true,
@@ -8,10 +8,10 @@
     "plaintext": false,
     "markdown": true
   },
-  
+
   // Enable inline suggestions
   "github.copilot.inlineSuggest.enable": true,
-  
+
   // Editor settings for better Copilot experience
   "editor.inlineSuggest.enabled": true,
   "editor.quickSuggestions": {
@@ -19,13 +19,13 @@
     "comments": true,
     "strings": true
   },
-  
+
   // Show Copilot suggestions
   "github.copilot.editor.enableAutoCompletions": true,
-  
+
   // Copilot Chat settings (if available)
   "github.copilot.chat.enabled": true,
-  
+
   // Additional editor enhancements
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
@@ -33,7 +33,7 @@
   "editor.insertSpaces": true,
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
-  
+
   // Language-specific settings
   "[python]": {
     "editor.tabSize": 4,
